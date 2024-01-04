@@ -4,23 +4,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
-        String[] words1 = {"code", "bug"};
-        String[] words2 = {"man", "moon", "main"};
-        String[] words3 = {"man", "moon", "good", "night"};
 
-        System.out.println(pairs(words1)); // {"a": true, "b": true, "c": false}
-        System.out.println(pairs(words2)); // {"a": false, "b": false, "c": false}
-        System.out.println(pairs(words3)); // {"c": true}
-    }
+        public static void main(String[] args) {
+            String[] words1 = {"a", "b", "a", "c", "b"};
+            String[] words2 = {"c", "b", "a"};
+            String[] words3 = {"c", "c", "c", "c"};
 
-    public static Map<String, String> pairs (String[] words) {
-        Map<String, String> map = new HashMap<>();
-
-
-        for (String word : words) {
-            map.put(Character.toString(word.charAt(0)) ,Character.toString(word.charAt(word.length()-1)));
+            System.out.println(wordMultiple(words1)); // {"a": true, "b": true, "c": false}
+            System.out.println(wordMultiple(words2)); // {"a": false, "b": false, "c": false}
+            System.out.println(wordMultiple(words3)); // {"c": true}
         }
-        return map;
+
+        public static Map<String, Boolean> wordMultiple(String[] words) {
+            Map<String, Integer> wordCount = new HashMap<>();
+
+            for (String word : words) {
+                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+            }
+
+            Map<String, Boolean> result = new HashMap<>();
+
+
+            for (String word : words) {
+                result.put(word, wordCount.get(word) >= 2);
+            }
+
+            return result;
+        }
     }
-}
+
+
