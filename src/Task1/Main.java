@@ -19,7 +19,12 @@ public class Main {
             Map<String, Integer> wordCount = new HashMap<>();
 
             for (String word : words) {
-                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+                wordCount.put(word, wordCount.getOrDefault(word, 0) + 1); //wordCount.getOrDefault(word, 0): Это выражение получает текущее количество вхождений строки word в wordCount. Если word уже есть в wordCount,
+                // то get вернет текущее количество вхождений, в противном случае (если word еще не встречалось), вернется значение по умолчанию, которое в данном случае равно 0.
+
+              //  + 1: Затем к полученному значению добавляется 1. Это увеличивает количество вхождений строки word на 1.
+
+                //      wordCount.put(word, ...) затем обновляет карту (wordCount), устанавливая новое количество вхождений для строки word
             }
 
             Map<String, Boolean> result = new HashMap<>();
